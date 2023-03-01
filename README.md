@@ -2,6 +2,8 @@
 <h3 align="right"> By Minsu Kim </h2>
 
 <p align="center"> This repo has been created as part of the project task in 2023 S1 STATS 220 paper at the University of Auckland. </p> 
+<br>
+<br>
 
 
 
@@ -19,5 +21,12 @@
 * __Project 4__ -  8 May 2023 *10pm (NZST)*
 * __Project 5__ - 22 May 2023 *10pm (NZST)*
 
+<br>
+<br>
 
-[cat]: 
+<h4 align="center"> Ending with a random photo of my neighbour's cat :) </h4>
+
+<p align="center"> <img src="https://github.com/521minsu/stats220/blob/main/Resources/CatPic.jpg" width="250"  height="250">  </p>
+<p align="center">  ฅˆ‧⩊‧ˆฅ </p>
+
+
