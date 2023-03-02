@@ -11,12 +11,10 @@ title <- image_blank(860,100,"#000000") %>%
 # Create expectation subtitle in a similar setting as the title, with decreased overall size. (VARS)
 expectation_text_blank <- image_blank(430,50,"#000000")
 expectation_text <- image_annotate(expectation_text_blank, "Expectation:", "center", color="#FFFFFF", size=25)
-expectation_text
 
 # Read a photo of hardworking cat from internet & Crop to 1:1 ratio to fit the meme size/format (PIPE)
 expectation_photo <- image_read("http://media.hyperrhiz.io/hyperrhiz21/miscellany/sewell/fig1.jpg") %>%
   image_crop(geometry_area(430, 430, 200), repage=FALSE) 
-expectation_photo
 
 # Create reality subtitle in the same setting as the expectation subtitle (PIPE)
 reality_text <- image_blank(430,50,"#000000") %>%
@@ -32,5 +30,6 @@ expectation_combined <- image_append(c(expectation_text, expectation_photo), sta
 reality_combined <- image_append(c(reality_text, reality_photo), stack=TRUE)
 exp_real_combined <- image_append(c(expectation_combined, reality_combined))
 meme <- image_append(c(title, exp_real_combined), stack=TRUE)
+meme
 
 image_write(meme, "my_meme.png")
