@@ -1,0 +1,32 @@
+# Import magick library
+library(magick)
+
+# Original gif 
+# https://tenor.com/ko/view/hewo-hello-wave-hi-corgi-gif-15708949
+
+# define initial frame with basic info on gif (this makes the first and second frame of the gif to be identical)
+frames <- image_read("PartC_img_src/0.png")%>%
+  image_crop(geometry_area(250, 225, 125, 130), repage=TRUE)
+
+# Create top banner saying "See ya!"
+annotation <- image_blank(250, 50, "#FFFFFF") %>%
+  image_annotate("See ya!", size=45, gravity="center")
+
+frames <- image_append(c(annotation, curr_frame), TRUE)
+frames
+
+# loop for all 10 frames in directory, crop appropriately, add banner and add to animation
+for(i in 0:9) {
+  curr_frame <- image_read(paste0("PartC_img_src/", i, ".png"))%>%
+    image_crop(geometry_area(250, 225, 125, 130), repage=TRUE)
+  
+  modified_frame <- image_append(c(annotation, curr_frame), TRUE)
+  
+  frames <- c(frames, modified_frame)
+  animation <- image_animate(frames, loop = 100)
+  
+}
+
+# Output animation gif to project folder with a name "my_animation.gif"
+image_write(animation, "my_animation.gif")
+
