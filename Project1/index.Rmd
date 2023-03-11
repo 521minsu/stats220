@@ -14,7 +14,7 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE)
 
 ## **My meme**
 
-As many of us are now working in a remote environment, I loved how much I can relate to the original meme I found! - So made it much more relatable to me :)
+As many of us are now working in a remote environment, I loved how much I can relate to the original meme I found!
 
 ![Original Meme](https://i.chzbgr.com/full/9461717760/h279C13DE/cat-working-home-expectation-reality-s%C3%B6zero-ste-officially-shelby-sro)
 
@@ -39,7 +39,8 @@ While I was searching for some inspiration online, found a really cute GIF so de
 ```
 
 
-```{css, echo=FALSE}
+```{css, echo=TRUE}
+/* Welcome to the CSS section for this page! */
 img{
   display: block;
   margin-left: auto;
