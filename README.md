@@ -3,7 +3,7 @@
 
 <p align="center"> This repo has been created as part of the project task in 2023 S1 STATS 220 paper at the University of Auckland. </p> 
 <br>
-<p align="center" > Link to Github Page for this repo!<br>https://521minsu.github.io/stats220/Project1/index.html </p> 
+<p align="center" > Link to Github Page for this repo!<br>https://521minsu.github.io/stats220 </p> 
 <br>
 <br>
 
