@@ -6,9 +6,14 @@
 <p align="center" > Link to Github Page for this repo!<br>https://521minsu.github.io/stats220 </p> 
 <p align="center" > Direct link to index.html <br>https://521minsu.github.io/stats220/Project1/index.html </p> 
 <p align="center" > Direct link to report.html <br>https://521minsu.github.io/stats220/Project1/report.html </p> 
+
 <br>
 <br>
 
+<h4 align="center"> A random photo of my neighbour's cat :) </h4>
+
+<p align="center"> <img src="https://github.com/521minsu/stats220/blob/main/Resources/CatPic.jpg" width="250"  height="250">  </p>
+<p align="center">  ฅˆ‧⩊‧ˆฅ </p>
 
 ### More info on STATS 220 paper
 #### Various Links to paper-related pages
@@ -23,13 +28,3 @@
 * __Project 3__ - 24 Apr 2023 *10pm (NZST)*
 * __Project 4__ -  8 May 2023 *10pm (NZST)*
 * __Project 5__ - 22 May 2023 *10pm (NZST)*
-
-<br>
-<br>
-
-<h4 align="center"> Ending with a random photo of my neighbour's cat :) </h4>
-
-<p align="center"> <img src="https://github.com/521minsu/stats220/blob/main/Resources/CatPic.jpg" width="250"  height="250">  </p>
-<p align="center">  ฅˆ‧⩊‧ˆฅ </p>
-
-
