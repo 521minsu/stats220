@@ -19,6 +19,12 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE)
 
 <br>
 
+## Link to Github Repo and Page
+<p>
+  Github repo: <a href="https://github.com/521minsu/stats220"> LINK </a> <br>
+  Github page: <a href="https://521minsu.github.io/stats220"> LINK </a>
+</p>
+
 ## Project Requirements
 <p>
   By carefully following the project instruction alongside a few github documentations, I was able to set my repository and a page up for this assignment. I have successfully uploaded all the required files to the repository, which were index.html and report.html file. I have also uploaded the full R Project folder as a subfolder within the repository. I have attached required photo evidence at the bottom of this page.They are so long to be in the middle! 
