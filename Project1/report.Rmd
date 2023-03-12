@@ -21,8 +21,8 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE)
 
 ## Link to Github Repo and Page
 <p>
-  Github repo: <a href="https://github.com/521minsu/stats220"> LINK </a> <br>
-  Github page: <a href="https://521minsu.github.io/stats220"> LINK </a>
+  Github repo: <a href="https://github.com/521minsu/stats220" > LINK </a> <br>
+  Github page: <a href="https://521minsu.github.io/stats220" > LINK </a>
 </p>
 
 ## Project Requirements
