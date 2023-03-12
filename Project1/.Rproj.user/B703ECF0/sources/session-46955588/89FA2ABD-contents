@@ -1,0 +1,106 @@
+---
+title: "Creating images with R"
+subtitle: "with a little bit of magick"
+author: "Minsu Kim"
+date: "2023-03-06"
+output: 
+  html_document:
+    includes:
+      in_header: header.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, echo = TRUE)
+```
+<br>
+<br>
+
+## My meme
+
+As many of us are now working in a remote environment, I loved how much I can relate to the original meme I found!
+
+![Original Meme](https://i.chzbgr.com/full/9461717760/h279C13DE/cat-working-home-expectation-reality-s%C3%B6zero-ste-officially-shelby-sro)
+
+![My version](my_meme.png)
+
+```{r file='meme.R', eval=FALSE, class.source="codeblocks"}
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## My animated GIF
+
+While I was searching for some inspiration online, found a really cute GIF so decided to alter it slightly for my assignment!
+
+![Original GIF](https://media.tenor.com/TUDtiAnenSAAAAAC/hello-corgi.gif)
+
+![My GIF](my_animation.gif)
+<p> (Please refresh the page if my gif doesn't move) </p>
+
+```{r file='animation.R', eval=FALSE, class.source="codeblocks"}
+
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Custom CSS**
+<p> By the way, have you noticed my custom icon for this page? </p>
+```{css, echo=TRUE, class.source="codeblocks"}
+/* Welcome to my custom CSS section for this page! */
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+h1, h2{
+  font-family: 'Permanent Marker', cursive;
+}
+
+h3, h4, p{
+  font-family: 'Gochi Hand', cursive;
+}
+
+h1{
+  font-weight: bold;
+}
+
+p{
+  font-size: 20px;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.codeblocks {
+  background-color: black;
+  color: white;
+  text-align: left;
+}
+
+.hljs-comment{
+font-style: normal !important;
+}
+
+.caption {
+  font-weight: bold;
+  font-size: 25px !important;
+}
+
+body{ 
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/dark_wood.png"); 
+  text-align: center;
+  color: #FFFFFF;
+}
+```
+
+
+
