@@ -13,6 +13,9 @@ output:
 knitr::opts_chunk$set(message = FALSE, echo = TRUE)
 ```
 <br>
+
+<h2> <a href="report.html"> Report </a> </h2>
+
 <br>
 
 ## My meme

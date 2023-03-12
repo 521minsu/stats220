@@ -14,6 +14,9 @@ knitr::opts_chunk$set(message = FALSE, echo = TRUE)
 ```
 
 <br>
+
+<h2> <a href="index.html"> HOME </a> </h2>
+
 <br>
 
 ## Project Requirements
@@ -69,12 +72,14 @@ img{
   width: 50%;
 }
 
+/* Custom Codeblock design */
 .codeblocks {
   background-color: black;
   color: white;
   text-align: left;
 }
 
+/* Disabled forced italics for comments in codeblocks */
 .hljs-comment{
 font-style: normal !important;
 }
@@ -95,7 +100,7 @@ body{
 
 <p> Adding Webpage icon to pages </p>
 ```{css, class.source="codeblocks"}
-/* This took a few extra steps to be embedded into a Rmd file. 
+This took a few extra steps to be embedded into a Rmd file. 
 
 1. I have created an extra file named "header.html" with a single tag "<link rel="icon" href="icon2.png" />" in it.
 
@@ -108,7 +113,6 @@ output:
 
 Now my page has a cute corgi icon!
 
-*/
 ```
 <br>
 <br>
@@ -116,6 +120,7 @@ Now my page has a cute corgi icon!
 ## Learning Reflection
 <p>
   While I was working on this assignment, I was able to learn that modern technologies are much more simpler and easier to approach than some people might have thought of. As an example, knitting html from a markdown page in combination with a bit of css was more than enough to create a somewhat nice-looking webpage, that could be used for various purposes. As technology develops, they don't just become nicer to utilise as a customer, but they become much more approachable and understandable for developers as well.
+  <br>
   <br>
   Nowadays, we can even game on our internet browsers. However, that's only when many different scripts, languages and other technologies work together to make it work. I'm now curious on how far this css can take us in terms of making an appealing website without javascript and other front-end technologies.
 </p>
