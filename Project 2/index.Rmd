@@ -1,0 +1,235 @@
+---
+title: "Project 2"
+subtitle: "STATS 220 Semester One 2023"
+author: "Minsu Kim"
+date: "2023-03-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+## Introduction
+<p>
+In this report, relationship between the time spent on learning second language per week and the overall confidence each respondents have on their second language skill.
+</p>
+
+<br>
+
+<p>
+One of the most important guidelines when designing a survey form was to communicate my purpose. For this purpose, I have included a clear and succinct introduction explaining why the form got created, purpose of this survey, which data and where would these collected data be shared within, and an emergency contact detail about the form. This ensures every participants to be well informed of the purpose, and where to contact if in doubt.
+</p>
+
+<br>
+
+<p> There are three key rules of a tidy data that has to be followed for a set of data to be considered "tidy". These are: <br> <br>
+1. Each column is a different variable <br>
+2. Each row is a different entity (observation, case) <br>
+3. Each cell is a single measurement <br> <br>
+With the categorical data that was generated using checkbox questions, property 2 is not satisfied. The reason for this is that each answer generates a fairly unique combination of checkbox options, making the answer option to vary even when the same option has been selected. (eg. a response answering "Tuition" only would vary from a response answering "Tuition and "Self-Study".) <br>
+To fix this problem, each checkbox option should be separated into different columns, with rows indicating a logical response (True/False) on wheter the reponse had the option selected or not. When I plotted this on the exploration.R file, I have listed the options in a single column alongside a second column with the number of participants selecting each options. 
+</p>
+<br>
+<p>
+  Google Form: <a href="https://forms.gle/Yy5z8M9BuXzLa8WKA" > LINK </a> <br>
+  Google Sheet (web ver.): <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTVuy1fPPIKSOyY9a7iTAXSzSTFtoYgMtsJCJZNg3IXHNhyJpDh0Cf9FNoeSjf0Nfa_f2ZJZdhyGz8C/pubhtml" > LINK </a>
+</p>
+
+<br>
+<br>
+
+## Analytics
+<p>
+  Google Sheet (csv ver.): <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTVuy1fPPIKSOyY9a7iTAXSzSTFtoYgMtsJCJZNg3IXHNhyJpDh0Cf9FNoeSjf0Nfa_f2ZJZdhyGz8C/pub?output=csv" > LINK </a> <br>
+  It may take a few minutes for your response to be visible in this csv file and the table below!
+</p>
+
+### Second Language Survey
+#### - Renamed Data -
+```{r data-import, class.source="codeblocks"}
+# Read survey data from an online csv file
+learning_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTVuy1fPPIKSOyY9a7iTAXSzSTFtoYgMtsJCJZNg3IXHNhyJpDh0Cf9FNoeSjf0Nfa_f2ZJZdhyGz8C/pub?output=csv", show_col_types = FALSE)
+
+# Modify raw survey data (Mostly renaming columns and removing the timestamp column)
+learning_data_mod <- learning_data %>%
+  select(-1) %>%
+  rename(
+         "Age" = questionOne,
+         "Hours Spent" = questionTwo,
+         "Confidence" = questionThree,
+         "Learning Type" = questionFour,
+         "Group Preference" = questionFive,
+         "Study Time" = questionSix,
+         "Study Period" = questionSeven,
+         "Study Method" = questionEight
+         )
+learning_data_mod %>%
+  knitr::kable()
+```
+
+<p>
+In total, `r nrow(learning_data)` students have responded to my form. Using this data, I have analysed further on how many hours does each respondent spend on learning second language per week in hours, as well as how confident they are in their second languages.
+</p>
+
+```{r fig.width=4, fig.height=2, class.source="codeblocks"}
+# Bar chart on Confidence level
+confLevel_chart <- learning_data_mod %>%
+  ggplot(aes(Confidence)) +
+  geom_bar(fill = "#33AA33") +
+#  scale_y_continuous(breaks = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)) +
+  labs(title="Confidence Level on a scale from 1 to 5", x = "Confidence Level", caption = "Figure 1") +
+  theme(plot.title=element_text(hjust=0.5), plot.caption = element_text(hjust=0.5))
+confLevel_chart
+```
+
+```{r fig.width=4, fig.height=2, class.source="codeblocks"}
+# Bar chart on Time Spent per Week
+timeSpent_chart <- learning_data %>%
+  filter(str_detect(questionThree, "4|5")) %>%
+  ggplot(aes(questionTwo)) +
+  geom_bar(fill = "#3333AA") +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,150,152,154,156,158,160,162,164,166,168)) +
+  labs(title="Time spent for second language per week\n of people with HIGH self-confidence", x = "Time (hours)", caption = "Figure 2") +
+  theme(plot.title=element_text(hjust=0.5), plot.caption = element_text(hjust=0.5)) 
+timeSpent_chart
+```
+
+```{r fig.width=4, fig.height=2, class.source="codeblocks"}
+# Bar chart on Time Spent per Week
+timeSpent_chart <- learning_data %>%
+  filter(str_detect(questionThree, "1|2")) %>%
+  ggplot(aes(questionTwo)) +
+  geom_bar(fill = "#AA3333") +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,142,144,146,148,150,152,154,156,158,160,162,164,166,168)) +
+  labs(title="Time spent for second language per week\n of people with LOW self-confidence", x = "Time (hours)", caption = "Figure 3") +
+  theme(plot.title=element_text(hjust=0.5), plot.caption = element_text(hjust=0.5)) 
+timeSpent_chart
+```
+
+
+
+All 3 figures, figure 1, 2 and 3 are bar graphs plotted using my survey data. Figure 1 shows the distribution of self-confidence levels within the respondents. It seems like the most people who have answered this survey to have relatively `r if(mean(learning_data$questionThree) >= 3) "high" else "low"` confidence for their second language, since the current average value of the confidence level is `r round(mean(learning_data$questionThree),2)`.
+<br>
+Figure 2 and 3 clearly shows the difference in time spent on second language per week between people who are confident on their skills and those who are less confident on their skills. People with 3 or higher confidence level (on a scale of 1 to 5) have been defined to have a "high" confidence, while the rest has "low" confidence on their second language skills.
+<br>
+<br>
+A few other variables summarised in this survey are:<br>
+Minimum time each respondent allocate to study second language per week in hours: `r min(learning_data$questionTwo)` <br>
+Maximum time each respondent allocate to study second language per week in hours: `r max(learning_data$questionTwo)`
+<br>
+<br>
+
+## Learning reflection
+<p>
+One important idea I have learnt from Module 2 of STATS 220 paper is that when creating a data table, it is important to have it rectangular (or tidy) so that it is much easier to visualise and utilise somewhere else for further analysis.
+</p>
+<br>
+<p>
+My project has successfully demonstrated creativity via various methods. <br>
+<strong>1. Applying custom CSS.</strong> <br>
+This has not been asked for this project, yet was covered in Module 1. The script has been set to be visible at the end of this page. <br><br>
+<strong>2. Tidying up data using extra functions.</strong> <br>
+They have been used to generate a statistically insightful bar chart on a checkbox question. In order to achieve this in the exploration.R file, I had to first count up responses containing each checkbox options using skills and commands learnt during the lectures and labs. Then I have created a custom data frame entity (basically a table) containing two columns, one for categories and one for the number of responses for each of the categories. Using a technique that hasn't been discussed in lectures nor labs, I have used the data frame to create a bar graph as shown below. The used technique involves setting a stat type to identity, while the default value for a bar graph is count.
+</p>
+```{r fig.width=4, fig.height=2, class.source="codeblocks"}
+# Preparation for study method bar chart
+countryVisit <- learning_data %>%
+  filter(str_detect(questionEight, "Visiting"))
+countryVisit <- nrow(countryVisit)
+
+apps <- learning_data %>%
+  filter(str_detect(questionEight, "apps"))
+apps <- nrow(apps)
+
+friend <- learning_data %>%
+  filter(str_detect(questionEight, "friend"))
+friend <- nrow(friend)
+
+tuition <- learning_data %>%
+  filter(str_detect(questionEight, "Tuition"))
+tuition <- nrow(tuition)
+
+groupStud <- learning_data %>%
+  filter(str_detect(questionEight, "group"))
+groupStud <- nrow(groupStud)
+
+selfStud <- learning_data %>%
+  filter(str_detect(questionEight, "Self"))
+selfStud <- nrow(selfStud)
+
+cats <- c("Country\nvisit", "Apps\n(eg. Duolingo)", "With\na friend", "Private\n Tuition", "Group\nstudy", "Self\nstudy")
+vals <- c(countryVisit, apps, friend, tuition, groupStud, selfStud)
+studMet <- data.frame(cats, vals)
+
+# Bar chart on Study Method
+studMet_chart <- studMet %>%
+  ggplot(aes(x=cats, y=vals)) +
+  geom_bar(fill = "#AA3333", stat="identity") +
+ # scale_y_continuous(breaks = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)) +
+  labs(title="Preferred Study Method", x = "Study Method", y = "count", caption="Figure 4") +
+  theme(plot.title=element_text(hjust=0.5), plot.caption = element_text(hjust=0.5))
+studMet_chart
+```
+<br>
+<p>
+<strong>3.Using extra r inline functions</strong><br> 
+I have used a if statement to alter a word within a sentence depending on the current data. This has been achieved with a simple statement: if(mean(learning_data$questionThree) >= 3) "high" else "low"
+</p>
+<p>
+I am now more curious about where I can find a proper documentation for this whole R language and its packages/libraries. 
+</p>
+<br><br>
+
+## Custom CSS
+```{css, echo=TRUE, class.source="codeblocks"}
+/* Welcome to my custom CSS section for this page! */
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+h1, h2{
+  font-family: 'Permanent Marker', cursive;
+}
+
+h3, h4, p{
+  font-family: 'Gochi Hand', cursive;
+}
+
+h1{
+  font-weight: bold;
+}
+
+p{
+  font-size: 20px;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.codeblocks {
+  background-color: black;
+  color: white;
+  text-align: left;
+}
+
+.hljs-comment{
+font-style: normal !important;
+}
+
+.caption {
+  font-weight: bold;
+  font-size: 25px !important;
+}
+
+body{ 
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/dark_wood.png"); 
+  text-align: center;
+  color: #FFFFFF;
+}
+```
